@@ -16,17 +16,18 @@ public class Main {
 
             System.out.print("Введіть бренд: ");
             String brand = scanner.next();
+            scanner.nextLine();
 
             System.out.print("Введіть модель: ");
-            String model = scanner.next();
+            String model = scanner.nextLine();
 
             System.out.print("Введіть ціну: ");
             double price = scanner.nextDouble();
 
             System.out.print("Введіть рік випуску: ");
             int year = scanner.nextInt();
+            scanner.nextLine();
 
-            // Створюємо об'єкт і додаємо в колекцію
             Phone phone = new Phone(brand, model, price, year);
             phones.add(phone);
         }
