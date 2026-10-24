@@ -13,7 +13,8 @@ public class Main {
             System.out.println("\n--- МЕНЮ ---");
             System.out.println("1. Створити новий об'єкт Phone");
             System.out.println("2. Вивести інформацію про всі об'єкти");
-            System.out.println("3. Завершити роботу");
+            System.out.println("3. Скопіювати останній доданий телефон");
+            System.out.println("4. Завершити роботу");
             System.out.print("Оберіть дію: ");
 
             String choice = scanner.nextLine();
@@ -36,13 +37,24 @@ public class Main {
                         System.out.print("Введіть об'єм пам'яті (ГБ): ");
                         int storage = Integer.parseInt(scanner.nextLine());
 
-                        Phone phone = new Phone(brand, model, price, year, storage);
-                        phones.add(phone);
-                        System.out.println("Телефон успішно додано!");
+                        System.out.println("Оберіть ОС (1-ANDROID, 2-IOS, 3-HARMONYOS, 4-WINDOWS_PHONE, 5-OTHER): ");
+                        int osChoice = Integer.parseInt(scanner.nextLine());
+                        PhoneOS os = PhoneOS.values()[osChoice - 1];
 
+                        System.out.print("Введіть модель процесора: ");
+                        String procModel = scanner.nextLine();
+
+                        System.out.print("Введіть кількість ядер процесора: ");
+                        int procCores = Integer.parseInt(scanner.nextLine());
+
+                        Processor processor = new Processor(procModel, procCores);
+                        Phone phone = new Phone(brand, model, price, year, storage, os, processor);
+                        phones.add(phone);
+
+                        System.out.println("Додано! Всього створено об'єктів: " + Phone.getInstanceCount());
                     } catch (NumberFormatException e) {
                         System.out.println("Помилка: Введено не число!");
-                    } catch (IllegalArgumentException e) {
+                    } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException e) {
                         System.out.println("Помилка валідації: " + e.getMessage());
                     }
                     break;
@@ -59,6 +71,18 @@ public class Main {
                     break;
 
                 case "3":
+                    if (phones.isEmpty()) {
+                        System.out.println("Немає що копіювати. Спочатку створіть телефон.");
+                    } else {
+                        Phone lastPhone = phones.get(phones.size() - 1);
+                        Phone copy = new Phone(lastPhone);
+                        phones.add(copy);
+                        System.out.println("Останній телефон успішно скопійовано!");
+                        System.out.println("Всього створено об'єктів: " + Phone.getInstanceCount());
+                    }
+                    break;
+
+                case "4":
                     running = false;
                     System.out.println("Програму завершено.");
                     break;

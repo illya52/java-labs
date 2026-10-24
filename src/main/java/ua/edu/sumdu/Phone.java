@@ -1,7 +1,5 @@
 package ua.edu.sumdu;
 
-package ua.edu.sumdu;
-
 import java.util.Objects;
 
 public class Phone {
@@ -12,8 +10,8 @@ public class Phone {
     private double price;
     private int year;
     private int storage;
-    private PhoneOS os;             // Використання enum
-    private Processor processor;    // Агрегація
+    private PhoneOS os;
+    private Processor processor;
 
     public Phone(String brand, String model, double price, int year, int storage, PhoneOS os, Processor processor) {
         setBrand(brand);
