@@ -1,7 +1,5 @@
 package ua.edu.sumdu;
 
-package ua.edu.sumdu;
-
 public class Processor {
     private String model;
     private int cores;
