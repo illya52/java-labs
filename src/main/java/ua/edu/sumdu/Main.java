@@ -130,9 +130,17 @@ public class Main {
             return;
         }
 
-        System.out.println("\n=== СПИСОК УСІХ ТЕЛЕФОНІВ ===");
+        System.out.println("\n=== СПИСОК УСІХ ТЕЛЕФОНІВ (Всього: " + phoneList.size() + ") ===");
         for (Phone p : phoneList) {
-            System.out.println(p.toString());
+
+            System.out.println("➤ " + p);
+
+            if (p instanceof SmartPhone) {
+                System.out.println("   [Це розумний телефон]");
+            } else if (p instanceof KeypadPhone) {
+                System.out.println("   [Це кнопковий телефон]");
+            } else {
+                System.out.println("   [Це звичайний базовий телефон]");
+            }
         }
     }
-}
