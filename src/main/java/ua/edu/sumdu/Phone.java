@@ -1,6 +1,5 @@
 package ua.edu.sumdu;
 
-import java.util.Objects;
 
 public class Phone {
     private String brand;
